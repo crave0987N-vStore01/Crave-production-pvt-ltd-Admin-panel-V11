@@ -1,0 +1,92 @@
+{
+  "name": "crave-admin-panel",
+  "productName": "Crave Admin Panel",
+  "version": "1.0.0",
+  "description": "Crave Productions - Admin Dashboard (Desktop)",
+  "author": "Nimah Dev Studio <nimsarapiyumal07@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --publish never",
+    "dist:all": "electron-builder -mwl --publish never",
+    "android:prepare": "node scripts/prepare-www.js && npx cap add android && node scripts/android-patch.js && npx cap sync android"
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.9"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/cli": "^6.2.0",
+    "@capacitor/core": "^6.2.0"
+  },
+  "build": {
+    "appId": "lk.nimah.crave.adminpanel",
+    "productName": "Crave Admin Panel",
+    "copyright": "Copyright © Crave Productions",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "assets/**/*",
+      "package.json"
+    ],
+    "publish": [
+      {
+        "provider": "github"
+      }
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Crave Admin Panel",
+      "artifactName": "Crave-Admin-Panel-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Crave-Admin-Panel-Portable-${version}.${ext}"
+    },
+    "mac": {
+      "icon": "build/icon.png",
+      "category": "public.app-category.business",
+      "target": [
+        "dmg"
+      ],
+      "artifactName": "Crave-Admin-Panel-${version}-mac.${ext}"
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "category": "Office",
+      "target": [
+        "AppImage"
+      ],
+      "artifactName": "Crave-Admin-Panel-${version}-linux.${ext}"
+    }
+  }
+}
