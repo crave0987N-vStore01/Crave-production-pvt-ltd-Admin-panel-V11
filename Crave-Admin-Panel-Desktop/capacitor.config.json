@@ -1,0 +1,8 @@
+{
+  "appId": "lk.nimah.crave.adminpanel",
+  "appName": "Crave Admin",
+  "webDir": "www",
+  "backgroundColor": "#0f0f0f",
+  "server": { "androidScheme": "https" },
+  "android": { "allowMixedContent": false, "webContentsDebuggingEnabled": false }
+}
